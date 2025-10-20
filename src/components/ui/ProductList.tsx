@@ -73,7 +73,7 @@ function ProductList<T>({
                   variant="contained"
                   endIcon={<LuShoppingBag />}
                 >
-                  get free sample
+                  get sample
                 </Button>
               </Link>
             </div>

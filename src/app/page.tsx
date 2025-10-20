@@ -3,6 +3,7 @@ import HeroImage from "@/components/sections/HeroImage";
 import Category from "@/components/sections/Category";
 import React from "react";
 import ProductPopular from "@/components/sections/ProductPopular";
+import AllProduct from "@/components/sections/AllProduct";
 
 function page() {
   return (
@@ -11,6 +12,7 @@ function page() {
       <Category />
       <CollectionCard />
       <ProductPopular />
+      <AllProduct />
     </div>
   );
 }
