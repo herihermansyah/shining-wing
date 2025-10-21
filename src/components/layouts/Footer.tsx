@@ -73,7 +73,7 @@ function Footer() {
               title={(item) => item.title}
               path={(item) => item.path}
               className="flex flex-col gap-1"
-              titleCalss="capitalize"
+              titleCalss="capitalize whitespace-nowrap"
             />
           </div>
         </div>

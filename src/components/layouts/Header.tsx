@@ -26,10 +26,10 @@ function Header() {
           title={(item) => item.title}
           arialLabel="main navigation"
           className={`fixed flex flex-col gap-8 top-0 left-1/2 -translate-x-1/2 text-center transition-all duration-500 ease-in-out
-            bg-header w-full rounded-bl-4xl rounded-br-4xl
-            md:static md:flex-row md:left-0 md:translate-x-0 
-            md:bg-red-500 md:w-0 md:rounded-bl-none md:rounded-br-none 
-            ${open ? "translate-y-16" : "-translate-y-full"} md:translate-y-0 `}
+            bg-header w-full py-8 rounded-bl-4xl rounded-br-4xl md:py-0 
+              md:static md:flex-row md:left-0 md:translate-x-0 
+            ${open ? "translate-y-16" : "-translate-y-full"} md:translate-y-0
+             `}
           titleCalss="capitalize"
         />
       </div>

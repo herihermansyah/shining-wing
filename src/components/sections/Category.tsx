@@ -27,7 +27,7 @@ function Category() {
             title={(item) => item.title}
             className2="flex gap-2"
             className3="border-[1px] rounded-sm border-gray-300 w-24 h-8 text-center"
-            titleClass2="text-[10px] capitalize"
+            titleClass2="text-[10px] capitalize hover:bg-hover"
           />
         ) : (
           <CategoryList
@@ -41,7 +41,7 @@ function Category() {
             className="flex items-center gap-2 "
             swiperSlideClass="w-72 border-[1px] border-gray-300 p-2 overflow-hidden rounded-sm"
             linkClass="flex flex-col items-center"
-            titleClass="whitespace-nowrap capitalize text-[10px]"
+            titleClass="whitespace-nowrap capitalize text-[10px] "
             swiperModule={[Mousewheel]}
             swiperProps={{
               slidesPerView: 4,

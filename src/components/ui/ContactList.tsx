@@ -9,6 +9,7 @@ type ContactListProps<T> = {
   className?: string;
   titleClass?: string;
   linkClass?: string;
+  iconClass?: string;
 };
 
 function ContactList<T>({
@@ -19,6 +20,7 @@ function ContactList<T>({
   className = "",
   titleClass = "",
   linkClass = "",
+  iconClass = "",
 }: ContactListProps<T>) {
   return (
     <div className={className}>
@@ -29,7 +31,7 @@ function ContactList<T>({
             <Link href={path(item)} className={linkClass}>
               <span className={titleClass}>{title(item)}</span>
               {Icon && (
-                <span>
+                <span className={iconClass}>
                   <Icon />
                 </span>
               )}

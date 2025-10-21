@@ -8,6 +8,7 @@ type MenuListProps<T> = {
   arialLabel?: string;
   className?: string;
   titleCalss?: string;
+  icon?: React.ElementType;
 };
 
 function MenuList<T>({

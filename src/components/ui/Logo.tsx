@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type LogoProps = {
@@ -26,16 +27,18 @@ function Logo({
 }: LogoProps) {
   return (
     <div className={className}>
-      {logoText && <h1 className={textClass}>{logoText}</h1>}
-      {logoImage && (
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          className={imageClass}
-        />
-      )}
+      <Link href={"/"}>
+        {logoText && <h1 className={textClass}>{logoText}</h1>}
+        {logoImage && (
+          <Image
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            className={imageClass}
+          />
+        )}
+      </Link>
     </div>
   );
 }

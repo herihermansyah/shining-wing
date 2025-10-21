@@ -15,10 +15,10 @@ function Addres() {
         <h2>cunsumer complaints service shining wing</h2>
       </div>
       <div className="flex flex-col gap-1">
-        <Link href="/">
+        <Link href="/email">
           <span>email: shiningwing@gmail.com</span>
         </Link>
-        <Link href="/">
+        <Link href="/phone">
           <span>Phone: +021-984759</span>
         </Link>
       </div>
