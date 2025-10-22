@@ -6,6 +6,7 @@ import {CategoryType} from "@/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import {useRouter} from "next/navigation";
 import "swiper/css";
+import {Mousewheel} from "swiper/modules";
 
 type CategoryProps = {
   // callback opsional → biar komponen ini reusable (bisa dipakai di halaman lain)
@@ -51,7 +52,10 @@ function Category({onSelectCategory}: CategoryProps) {
           swiperProps={{
             slidesPerView: 5,
             spaceBetween: 5,
+            mousewheel: {forceToAxis: true},
+            loop: true,
           }}
+          swiperModule={[Mousewheel]}
           // ✅ Langsung ambil dari categoryData (karena sudah termasuk "all")
           data={categoryData}
           src={(item) => item.image}
@@ -60,6 +64,7 @@ function Category({onSelectCategory}: CategoryProps) {
           className2="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-4 text-center"
           className3="p-2 rounded-xl border hover:shadow-md transition"
           imageClass="w-8 h-8 object-contain mx-auto"
+          titleClass="capitalize"
           onItemClick={(item: CategoryType) => handleCategoryClick(item.title)}
         />
       ) : (
@@ -68,6 +73,7 @@ function Category({onSelectCategory}: CategoryProps) {
           title={(item) => item.title}
           width={80}
           height={80}
+          titleClass2="capitalize"
           className2="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-1 text-center"
           className3="p-2 rounded-xl border hover:shadow-md transition"
           imageClass="w-8 h-8 object-contain mx-auto"

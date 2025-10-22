@@ -1,11 +1,12 @@
 "use client";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, Suspense} from "react";
 import {useSearchParams, useRouter} from "next/navigation";
 import AllProduct from "@/components/sections/AllProduct";
 import Category from "@/components/sections/Category";
 import {productData} from "@/data/productData";
 
-function Shop() {
+// 🧩 Komponen utama
+function ShopContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -16,18 +17,18 @@ function Shop() {
   const [selectedCategory, setSelectedCategory] =
     useState<string>(categoryParam);
 
-  // 🧠 Sinkronkan state dengan URL (biar URL dan state selalu sama)
+  // 🧠 Sinkronkan state dengan URL
   useEffect(() => {
     setSelectedCategory(categoryParam);
   }, [categoryParam]);
 
-  // 🔄 Saat user klik kategori di halaman ini
+  // 🔄 Saat user klik kategori
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
-    router.push(`/shop?category=${category}`); // update URL juga
+    router.push(`/shop?category=${category}`);
   };
 
-  // 🧠 Logika filter produk berdasarkan kategori
+  // 🧮 Filter produk berdasarkan kategori
   const filteredProducts =
     selectedCategory === "all"
       ? productData
@@ -43,10 +44,24 @@ function Shop() {
       {/* 🧭 Komponen kategori */}
       <Category onSelectCategory={handleCategorySelect} />
 
-      {/* 🛍️ Tampilkan hasil filter */}
+      {/* 🛍️ Produk hasil filter */}
       <AllProduct data={filteredProducts} />
     </div>
   );
 }
 
-export default Shop;
+// ⚡ Komponen pembungkus pakai Suspense
+// ini yang bikin useSearchParams() bisa jalan aman di build
+export default function Shop() {
+  return (
+    <Suspense
+      fallback={
+        <div className="text-center flex justify-center items-center mt-10">
+          Loading...
+        </div>
+      }
+    >
+      <ShopContent />
+    </Suspense>
+  );
+}
