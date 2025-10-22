@@ -1,21 +1,16 @@
-"use client";
 import React from "react";
-import ProductList from "../ui/ProductList";
 import HightlighText from "../ui/HightlighText";
-import {ProductDataType} from "@/types";
+import ProductList from "../ui/ProductList";
+import {productData} from "@/data/productData";
 
-type AllProductProps = {
-  data: ProductDataType[];
-};
-
-function AllProduct({data}: AllProductProps) {
+function NewProduct() {
   return (
     <div>
-      <HightlighText text="all product" />
+      <HightlighText text="new product" />
       <ProductList
-        data={data}
+        data={productData.filter((item) => item.newProduct)}
         src={(item) => item.image.thumbnail}
-        alt={(item) => item.title}
+        alt={(item) => item.description}
         title={(item) => item.title}
         price={(item) => item.price.toLocaleString()}
         rating={(item) => item.rating}
@@ -26,4 +21,4 @@ function AllProduct({data}: AllProductProps) {
   );
 }
 
-export default AllProduct;
+export default NewProduct;

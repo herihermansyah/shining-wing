@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import type {SwiperProps} from "swiper/react";
@@ -8,7 +7,6 @@ import type {SwiperModule} from "swiper/types";
 
 type CategoryListProps<T> = {
   data: T[];
-  path: (item: T) => string;
   src?: (item: T) => string;
   alt?: (item: T) => string;
   width?: number;
@@ -25,11 +23,11 @@ type CategoryListProps<T> = {
   imageClass?: string;
   titleClass?: string;
   titleClass2?: string;
+  onItemClick?: (item: T) => void;
 };
 
 function CategoryList<T>({
   data,
-  path,
   src,
   alt,
   title,
@@ -39,13 +37,12 @@ function CategoryList<T>({
   className2 = "",
   className3 = "",
   swiperSlideClass = "",
-  linkClass = "",
-  linkClass2 = "",
   imageClass = "",
   titleClass = "",
   titleClass2 = "",
-  width,
-  height,
+  width = 50,
+  height = 50,
+  onItemClick, // 🆕 props baru
 }: CategoryListProps<T>) {
   const isSwiper = swiperProps || swiperModule;
   return (
@@ -55,7 +52,10 @@ function CategoryList<T>({
           <Swiper modules={swiperModule} {...swiperProps}>
             {data.map((item, index) => (
               <SwiperSlide key={index} className={swiperSlideClass}>
-                <Link href={path(item)} className={linkClass}>
+                <div
+                  onClick={() => onItemClick?.(item)}
+                  className={`${className3} cursor-pointer flex flex-col items-center gap-2`}
+                >
                   {src && (
                     <Image
                       loading="lazy"
@@ -68,9 +68,8 @@ function CategoryList<T>({
                       className={imageClass}
                     />
                   )}
-
                   <span className={titleClass}>{title(item)}</span>
-                </Link>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -78,10 +77,12 @@ function CategoryList<T>({
       ) : (
         <div className={className2}>
           {data.map((item, index) => (
-            <div className={className3} key={index}>
-              <Link className={linkClass2} href={path(item)}>
-                <span className={titleClass2}>{title(item)}</span>
-              </Link>
+            <div
+              key={index}
+              className={`${className3} cursor-pointer flex flex-col items-center gap-2`}
+              onClick={() => onItemClick?.(item)}
+            >
+              <span className={titleClass2}>{title(item)}</span>
             </div>
           ))}
         </div>
