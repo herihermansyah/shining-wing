@@ -38,7 +38,7 @@ function ProductList<T>({
   view,
   order,
   className = "grid grid-cols-2 md:grid-cols-4 gap-4",
-  imageClass = "w-full h-52 object-cover",
+  imageClass = "w-full h-42 object-cover",
   boxClass = "border-[1px] border-gray-200 shadow-xl overflow-hidden",
   boxClass2 = "flex flex-col gap-1  p-1",
   buttonClass = "flex flex-col xl:flex-row gap-1",

@@ -4,7 +4,7 @@ export const categoryData: CategoryType[] = [
   {
     id: "cat-01",
     title: "all",
-    image: "/category/newproduct.png",
+    image: "/category/all.png",
   },
   {
     id: "cat-02",

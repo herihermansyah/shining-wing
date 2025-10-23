@@ -4,7 +4,7 @@ import HightlighText from "../ui/HightlighText";
 function About() {
   return (
     <div className="flex flex-col gap-4 justify-center">
-      <HightlighText text="tentang shining wing" />
+      <HightlighText text="about shining wing" />
       <div className="flex flex-col gap-4">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis

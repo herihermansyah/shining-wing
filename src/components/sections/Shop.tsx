@@ -1,67 +1,72 @@
 "use client";
-import React, {useState, useEffect, Suspense} from "react";
-import {useSearchParams, useRouter} from "next/navigation";
+
+import React, {useState, useEffect} from "react";
+import {useSearchParams, useRouter, usePathname} from "next/navigation";
 import AllProduct from "@/components/sections/AllProduct";
 import Category from "@/components/sections/Category";
 import {productData} from "@/data/productData";
+import {IoSearch} from "react-icons/io5";
+import {motion} from "framer-motion";
 
-// 🧩 Komponen utama
 function ShopContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname(); // <— tambahkan ini
 
-  // 🔹 Ambil kategori dari URL, default ke "all"
   const categoryParam = searchParams.get("category") || "all";
+  const searchQuery = searchParams.get("search")?.toLowerCase() || "";
 
-  // 🔹 Simpan kategori aktif di state
   const [selectedCategory, setSelectedCategory] =
     useState<string>(categoryParam);
+  const [filteredProducts, setFilteredProducts] = useState(productData);
 
-  // 🧠 Sinkronkan state dengan URL
   useEffect(() => {
     setSelectedCategory(categoryParam);
-  }, [categoryParam]);
 
-  // 🔄 Saat user klik kategori
+    const filtered = productData.filter((item) => {
+      const matchCategory =
+        categoryParam === "all" ||
+        item.category.toLowerCase() === categoryParam ||
+        (categoryParam === "new" && item.newProduct) ||
+        (categoryParam === "popular" && item.popular);
+
+      const matchSearch =
+        searchQuery === "" ||
+        item.title.toLowerCase().includes(searchQuery) ||
+        item.description?.toLowerCase().includes(searchQuery);
+
+      return matchCategory && matchSearch;
+    });
+
+    setFilteredProducts(filtered);
+  }, [selectedCategory, categoryParam, searchQuery, pathname]); // <— tambahkan searchQuery + pathname biar reaktif
+
   const handleCategorySelect = (category: string) => {
-    setSelectedCategory(category);
     router.push(`/shop?category=${category}`);
   };
 
-  // 🧮 Filter produk berdasarkan kategori
-  const filteredProducts =
-    selectedCategory === "all"
-      ? productData
-      : productData.filter(
-          (item) =>
-            item.category.toLowerCase() === selectedCategory ||
-            (selectedCategory === "new" && item.newProduct) ||
-            (selectedCategory === "popular" && item.popular)
-        );
-
   return (
     <div className="container mx-auto px-2 md:px-0 mt-4 flex flex-col gap-10">
-      {/* 🧭 Komponen kategori */}
       <Category onSelectCategory={handleCategorySelect} />
 
-      {/* 🛍️ Produk hasil filter */}
-      <AllProduct data={filteredProducts} />
+      {filteredProducts.length > 0 ? (
+        <AllProduct data={filteredProducts} />
+      ) : (
+        <motion.div
+          initial={{opacity: 0, y: 10}}
+          animate={{opacity: 1, y: 0}}
+          transition={{duration: 0.3}}
+          className="flex flex-col items-center justify-center py-20 text-gray-500"
+        >
+          <IoSearch size={50} className="mb-4 opacity-60" />
+          <p className="text-xl font-semibold">Produk tidak ditemukan</p>
+          <p className="text-sm text-gray-400 mt-1">
+            Coba gunakan kata kunci lain atau ubah kategori.
+          </p>
+        </motion.div>
+      )}
     </div>
   );
 }
 
-// ⚡ Komponen pembungkus pakai Suspense
-// ini yang bikin useSearchParams() bisa jalan aman di build
-export default function Shop() {
-  return (
-    <Suspense
-      fallback={
-        <div className="text-center flex justify-center items-center mt-10">
-          Loading...
-        </div>
-      }
-    >
-      <ShopContent />
-    </Suspense>
-  );
-}
+export default ShopContent;

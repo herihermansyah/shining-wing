@@ -44,7 +44,7 @@ function Header() {
       </div>
       <div className="md:order-3">
         <SearchBar
-          inputClass="absolute top-17 left-1/2 -translate-x-1/2 w-[95%] bg-yellow-400 z-50 
+          inputClass="absolute top-17 left-1/2 -translate-x-1/2 w-[95%] bg-white z-50 
           md:static md:top-0 md:left-0 md:-translate-x-0 md:w-full
         "
         />
