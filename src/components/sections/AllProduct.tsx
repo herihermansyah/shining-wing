@@ -19,8 +19,7 @@ function AllProduct({data}: AllProductProps) {
         title={(item) => item.title}
         price={(item) => item.price.toLocaleString()}
         rating={(item) => item.rating}
-        view={(item) => item.path}
-        order={(item) => item.order}
+        view={(item) => `/product/${item.id}`}
       />
     </div>
   );
