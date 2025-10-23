@@ -7,10 +7,40 @@ import {FaYoutubeSquare} from "react-icons/fa";
 import {FaSquareXTwitter} from "react-icons/fa6";
 
 export const contactData: ContactType[] = [
-  {id: 1, title: "whatsApp", path: "/wa", icon: FaSquareWhatsapp},
-  {id: 2, title: "instagram", path: "/ig", icon: FaInstagramSquare},
-  {id: 3, title: "facebook", path: "/fb", icon: ImFacebook2},
-  {id: 4, title: "tiktok", path: "/tt", icon: AiFillTikTok},
-  {id: 4, title: "youtube", path: "/yt", icon: FaYoutubeSquare},
-  {id: 4, title: "X", path: "/x", icon: FaSquareXTwitter},
+  {
+    id: 1,
+    title: "whatsApp",
+    path: "https://herihermansyah.vercel.app/",
+    icon: FaSquareWhatsapp,
+  },
+  {
+    id: 2,
+    title: "instagram",
+    path: "https://herihermansyah.vercel.app/",
+    icon: FaInstagramSquare,
+  },
+  {
+    id: 3,
+    title: "facebook",
+    path: "https://herihermansyah.vercel.app/",
+    icon: ImFacebook2,
+  },
+  {
+    id: 4,
+    title: "tiktok",
+    path: "https://herihermansyah.vercel.app/",
+    icon: AiFillTikTok,
+  },
+  {
+    id: 4,
+    title: "youtube",
+    path: "https://herihermansyah.vercel.app/",
+    icon: FaYoutubeSquare,
+  },
+  {
+    id: 4,
+    title: "X",
+    path: "https://herihermansyah.vercel.app/",
+    icon: FaSquareXTwitter,
+  },
 ];

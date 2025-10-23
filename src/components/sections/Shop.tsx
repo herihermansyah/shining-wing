@@ -1,5 +1,4 @@
 "use client";
-
 import React, {useState, useEffect} from "react";
 import {useSearchParams, useRouter, usePathname} from "next/navigation";
 import AllProduct from "@/components/sections/AllProduct";
@@ -11,7 +10,7 @@ import {motion} from "framer-motion";
 function ShopContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const pathname = usePathname(); // <— tambahkan ini
+  const pathname = usePathname();
 
   const categoryParam = searchParams.get("category") || "all";
   const searchQuery = searchParams.get("search")?.toLowerCase() || "";
@@ -39,7 +38,7 @@ function ShopContent() {
     });
 
     setFilteredProducts(filtered);
-  }, [selectedCategory, categoryParam, searchQuery, pathname]); // <— tambahkan searchQuery + pathname biar reaktif
+  }, [selectedCategory, categoryParam, searchQuery, pathname]);
 
   const handleCategorySelect = (category: string) => {
     router.push(`/shop?category=${category}`);
@@ -59,9 +58,9 @@ function ShopContent() {
           className="flex flex-col items-center justify-center py-20 text-gray-500"
         >
           <IoSearch size={50} className="mb-4 opacity-60" />
-          <p className="text-xl font-semibold">Produk tidak ditemukan</p>
+          <p className="text-xl font-semibold">Product not found</p>
           <p className="text-sm text-gray-400 mt-1">
-            Coba gunakan kata kunci lain atau ubah kategori.
+            Try using different keywords or changing the category.
           </p>
         </motion.div>
       )}

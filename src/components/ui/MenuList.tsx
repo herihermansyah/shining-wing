@@ -9,6 +9,7 @@ type MenuListProps<T> = {
   className?: string;
   titleCalss?: string;
   icon?: React.ElementType;
+  onItemClick?: () => void;
 };
 
 function MenuList<T>({
@@ -18,13 +19,14 @@ function MenuList<T>({
   className = "",
   arialLabel,
   titleCalss = "",
+  onItemClick,
 }: MenuListProps<T>) {
   return (
     <nav aria-label={arialLabel}>
       <ul className={className}>
         {data.map((item, index) => (
           <li key={index}>
-            <Link href={path(item)}>
+            <Link href={path(item)} onClick={onItemClick}>
               <span className={titleCalss}>{title(item)}</span>
             </Link>
           </li>

@@ -5,15 +5,13 @@ import HightlighText from "../ui/HightlighText";
 import MenuList from "../ui/MenuList";
 import {mainMenu, serviceAbout} from "@/data/menu";
 import Addres from "../sections/Addres";
-import Newsletter from "../sections/Newsletter";
 
 function Footer() {
   return (
     <div className="container mx-auto py-4 px-2 md:px-0 flex flex-col gap-10">
       <div
         className="flex flex-col gap-10 
-        lg:grid lg:grid-cols-3 
-        xl:flex xl:flex-row items-start justify-center"
+        lg:flex lg:flex-row items-start justify-center"
       >
         {/* address */}
         <div>
@@ -26,9 +24,8 @@ function Footer() {
         </div>
         {/* box 2 */}
         <div
-          className="flex gap-10 flex-wrap sm:gap-10 md:gap-20 
-        lg:grid lg:grid-cols-2 lg:gap-6
-        xl:flex xl:flex-row xl:flex-nowrap xl:gap-10
+          className="flex flex-wrap gap-10 
+          
         "
         >
           {/* social media */}
@@ -78,16 +75,6 @@ function Footer() {
           </div>
         </div>
         {/* box 2 */}
-
-        {/* newsletter */}
-        <div>
-          <HightlighText
-            text="You are new to SHINING WING"
-            textClass="text-left capitalize whitespace-nowrap font-bold"
-            className="mb-2"
-          />
-          <Newsletter />
-        </div>
       </div>
       {/* coypryight */}
       <div className="flex flex-col gap-2 justify-center text-center">

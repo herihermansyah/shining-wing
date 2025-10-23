@@ -2,9 +2,7 @@ import React from "react";
 import HightlighText from "../ui/HightlighText";
 import ContactList from "../ui/ContactList";
 import {contactData} from "@/data/contactData";
-import Newsletter from "./Newsletter";
 import Addres from "./Addres";
-import {Divider} from "@mui/material";
 
 function Contact() {
   return (
@@ -42,8 +40,6 @@ function Contact() {
             linkClass="flex items-center gap-4"
             iconClass="text-2xl"
           />
-          <Divider />
-          <Newsletter />
         </div>
       </div>
       <div className="flex flex-col  gap-10 bg-option p-10">
