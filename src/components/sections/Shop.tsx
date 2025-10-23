@@ -1,5 +1,5 @@
 "use client";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, Suspense} from "react";
 import {useSearchParams, useRouter, usePathname} from "next/navigation";
 import AllProduct from "@/components/sections/AllProduct";
 import Category from "@/components/sections/Category";
@@ -68,4 +68,16 @@ function ShopContent() {
   );
 }
 
-export default ShopContent;
+export default function Shop() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center text-center">
+          loading shop....
+        </div>
+      }
+    >
+      <ShopContent />
+    </Suspense>
+  );
+}
