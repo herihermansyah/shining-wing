@@ -46,8 +46,8 @@ This website was created to deliver a **professional look**, **SEO-friendly stru
 
 Clone and run this project locally:
 
-git clone https://github.com/herman/portfolio.git
-cd portfolio
+git clone https://github.com/herihermansyah/shining-wing.git
+cd shining-wing
 npm install
 npm run dev
 
@@ -59,12 +59,10 @@ http://localhost:3000
 
 🧩 Project Structure & Data
 
-To add or modify products, open:
-/data/productData.ts
+To add or modify products, open: /data/productData.ts
 
-To change hero images, contact info, or other sections, edit the files inside: 
+To change hero images, contact info, or other sections, edit the files inside: /data
 
-/data
 🪪 License
 Free to use and modify — you can adapt this project for personal or commercial purposes.
 
