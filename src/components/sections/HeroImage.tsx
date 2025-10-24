@@ -10,14 +10,14 @@ import {Autoplay, Mousewheel, Pagination} from "swiper/modules";
 
 function HeroImage() {
   return (
-    <div>
+    <div className="relative w-full overflow-hidden">
       <SliderImage
         data={heroImage}
         src={(item) => item.path}
         alt={(item) => item.title}
         width={400}
         height={600}
-        imageClass="rounded-xl w-full lg:h-120"
+        imageClass="rounded-xl w-full lg:h-120 object-cover"
         swiperProps={{
           autoplay: {
             delay: 5000,
