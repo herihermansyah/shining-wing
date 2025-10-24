@@ -1,13 +1,15 @@
 import PreviewProduct from "@/components/sections/PreviewProduct";
-import {productData} from "@/data/productData";
-import type {Metadata} from "next";
+import { productData } from "@/data/productData";
+import type { Metadata } from "next";
 
+// 🧠 Sekarang params itu Promise<{id: string}>
 export async function generateMetadata({
   params,
 }: {
-  params: {id: string};
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const product = productData.find((item) => item.id === params.id);
+  const { id } = await params; // ✅ tunggu params di-resolve
+  const product = productData.find((item) => item.id === id);
 
   if (!product) {
     return {
@@ -52,8 +54,14 @@ export async function generateMetadata({
   };
 }
 
-export default function Page({params}: {params: {id: string}}) {
-  const product = productData.find((item) => item.id === params.id);
+// ⚙️ Page component juga sama — ubah params jadi Promise
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params; // ✅ tunggu params di-resolve
+  const product = productData.find((item) => item.id === id);
 
   if (!product) {
     return (
@@ -92,7 +100,7 @@ export default function Page({params}: {params: {id: string}}) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{__html: JSON.stringify(productSchema)}}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
       <div>
         <PreviewProduct />
