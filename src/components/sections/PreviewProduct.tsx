@@ -56,22 +56,22 @@ function PreviewProduct() {
             alt={product.title}
             width={400}
             height={400}
-            className="rounded-xl"
+            className="rounded-xl w-full h-56 md:h-96 object-cover"
           />
-          <div className="flex items-center gap-2 md:absolute bottom-4 left-4">
+          <div className="flex flex-wrap items-center gap-2 md:absolute bottom-4 left-4">
             <Image
               src={product.image.image1}
               alt="image1"
-              width={100}
-              height={100}
-              className="rounded-md object-cover"
+              width={300}
+              height={300}
+              className="rounded-md object-cover w-22 h-32"
             />
             <Image
               src={product.image.image2}
               alt="image2"
-              width={100}
-              height={100}
-              className="rounded-md object-cover"
+              width={300}
+              height={300}
+              className="rounded-md object-cover w-22 h-32"
             />
           </div>
         </div>

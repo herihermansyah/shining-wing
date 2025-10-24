@@ -14,6 +14,4 @@ export type ProductDataType = {
   rating: number;
   popular: boolean;
   newProduct: boolean;
-  path: string;
-  order: string;
 };
